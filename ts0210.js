@@ -1,12 +1,23 @@
-const {battery, iasZoneAlarm, commandsOnOff} = require('zigbee-herdsman-converters/lib/modernExtend');
+const {battery, iasZoneAlarm} = require('zigbee-herdsman-converters/lib/modernExtend');
 
 const definition = {
-    zigbeeModel: ['TS0210'],
-    model: 'TS0210',
-    vendor: '_TZ3210_kjafhwd2',
-    description: 'Vibration sensor',
-    extend: [battery(), iasZoneAlarm({"zoneType":"generic","zoneAttributes":["alarm_1","tamper","battery_low"]}), commandsOnOff()],
-    meta: {},
+  zigbeeModel: ['TS0210'],
+  model: 'TS0210',
+  vendor: '_TZ3210_kjafhwd2',
+  description: 'Vibration sensor',
+  extend: [
+    battery(),
+    iasZoneAlarm({
+      "zoneType":"vibration",
+      "zoneAttributes":[
+        "vibration",
+        "alarm_1",
+        "battery_low",
+      ],
+      "alarmTimeout": True,
+    }),
+  ],
+  meta: {},
 };
 
 module.exports = definition;

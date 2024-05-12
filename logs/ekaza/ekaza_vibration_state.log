@@ -1,0 +1,107 @@
+zh:zstack:unpi:parser: <-- [254,28,68,129,0,0,0,5,158,8,1,1,0,127,0,115,118,105,0,0,8,8,21,10,2,0,25,1,4,82,136,28,158]
+zh:zstack:unpi:parser: --- parseNext [254,28,68,129,0,0,0,5,158,8,1,1,0,127,0,115,118,105,0,0,8,8,21,10,2,0,25,1,4,82,136,28,158]
+zh:zstack:unpi:parser: --> parsed 28 - 2 - 4 - 129 - [0,0,0,5,158,8,1,1,0,127,0,115,118,105,0,0,8,8,21,10,2,0,25,1,4,82,136,28] - 158
+zh:zstack:znp: AREQ: <-- AF - incomingMsg - 
+{
+    "groupid": 0,
+    "clusterid": 1280,
+    "srcaddr": 2206,
+    "srcendpoint": 1,
+    "dstendpoint": 1,
+    "wasbroadcast": 0,
+    "linkquality": 127,
+    "securityuse": 0,
+    "timestamp": 6911603,
+    "transseqnumber": 0,
+    "len": 8,
+    "data": {
+        "type": "Buffer",
+        "data": [8, 21, 10, 2, 0, 25, 1, 4]
+    }
+}
+zh:controller: Received payload: clusterID=1280, address=2206, groupID=0, endpoint=1, destinationEndpoint=1, wasBroadcast=false, linkQuality=127, frame=
+{
+    "header": {
+        "frameControl": {
+            "frameType": 0,
+            "manufacturerSpecific": false,
+            "direction": 1,
+            "disableDefaultResponse": false,
+            "reservedBits": 0
+        },
+        "manufacturerCode": null,
+        "transactionSequenceNumber": 21,
+        "commandIdentifier": 10
+    },
+    "payload": [
+        {
+            "attrId": 2,
+            "dataType": 25,
+            "attrData": 1025
+        }
+    ],
+    "command": {
+        "ID": 10,
+        "name": "report",
+        "parameters": [
+            {
+                "name": "attrId",
+                "type": 33
+            },
+            {
+                "name": "dataType",
+                "type": 32
+            },
+            {
+                "name": "attrData",
+                "type": 1000
+            }
+        ]
+    }
+}
+zh:controller:endpoint: ZCL command 0xa4c1386ff78a1f63/1 ssIasZone.defaultRsp(
+{
+    "cmdId": 10,
+    "statusCode": 0
+},
+{
+    "timeout": 10000,
+    "disableResponse": false,
+    "disableRecovery": false,
+    "disableDefaultResponse": true,
+    "direction": 1,
+    "srcEndpoint": null,
+    "reservedBits": 0,
+    "manufacturerCode": null,
+    "transactionSequenceNumber": 21,
+    "writeUndiv": false
+}
+zh:zstack: sendZclFrameToEndpointInternal 0xa4c1386ff78a1f63:2206/1 (0,0,1)
+zh:zstack:znp: SREQ: --> AF - dataRequest - 
+{
+    "dstaddr": 2206,
+    "destendpoint": 1,
+    "srcendpoint": 1,
+    "clusterid": 1280,
+    "transid": 108,
+    "options": 0,
+    "radius": 30,
+    "len": 5,
+    "data": {
+        "type": "Buffer",
+        "data": [24, 21, 11, 10, 0]
+    }
+}
+zh:zstack:unpi:writer: --> frame [254,15,36,1,158,8,1,1,0,5,108,0,30,5,24,21,11,10,0,194]
+zh:zstack:unpi:parser: --- parseNext []
+z2m: Received Zigbee message from 'zbb-vibr01', type 'attributeReport', cluster 'ssIasZone', data '{"zoneStatus":1025}' from endpoint 1 with groupID 0
+zh:zstack:unpi:parser: <-- [254,1,100,1,0,100]
+zh:zstack:unpi:parser: --- parseNext [254,1,100,1,0,100]
+zh:zstack:unpi:parser: --> parsed 1 - 3 - 4 - 1 - [0] - 100
+zh:zstack:znp: SRSP: <-- AF - dataRequest - {"status":0}
+zh:zstack:unpi:parser: --- parseNext []
+zh:zstack:unpi:parser: <-- [254,3,68,128,0,1,108,170]
+zh:zstack:unpi:parser: --- parseNext [254,3,68,128,0,1,108,170]
+zh:zstack:unpi:parser: --> parsed 3 - 2 - 4 - 128 - [0,1,108] - 170
+zh:zstack:znp: AREQ: <-- AF - dataConfirm - {"status":0,"endpoint":1,"transid":108}
+zh:zstack:unpi:parser: --- parseNext []

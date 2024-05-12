@@ -1,4 +1,4 @@
-const {lock, lock_action, pincode, battery} = require('zigbee-herdsman-converters/lib/modernExtend');
+const {lock, battery} = require('zigbee-herdsman-converters/lib/modernExtend');
 const fz = require('zigbee-herdsman-converters/converters/fromZigbee');
 const tz = require('zigbee-herdsman-converters/converters/toZigbee');
 const reporting = require('zigbee-herdsman-converters/lib/reporting');
@@ -49,23 +49,23 @@ module.exports = {
   fromZigbee: [
     fzLocal.action_source_user,
     fzLocal.action_source_name,
-    fz.lock, fz.battery,
+    fz.lock,
+    fz.battery,
     fz.lock_operation_event,
     fz.lock_programming_event,
     fz.lock_pin_code_response,
-    fz.lock_user_status_response
+    fz.lock_user_status_response,
   ],
   toZigbee: [
     tz.lock,
     tz.pincode_lock,
-    tz.lock_userstatus
+    tz.lock_userstatus,
   ],
   meta: {pinCodeCount: 250},
   exposes: [
     lock(), 
     e.lock_action(), 
     battery(), 
-    pincode(),
   ],
   configure: async (device, coordinatorEndpoint) => {
     const endpoint = device.getEndpoint(1);

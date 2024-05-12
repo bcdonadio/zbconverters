@@ -1,9 +1,5 @@
 const {lock, battery} = require('zigbee-herdsman-converters/lib/modernExtend');
-const fz = require('zigbee-herdsman-converters/converters/fromZigbee');
-const tz = require('zigbee-herdsman-converters/converters/toZigbee');
 const reporting = require('zigbee-herdsman-converters/lib/reporting');
-const exposes = require('zigbee-herdsman-converters/lib/exposes');
-const e = exposes.presets;
 
 const fzLocal = {
   action_source_name: {
@@ -45,28 +41,8 @@ module.exports = {
   zigbeeModel: ['YMC420'],
   model: 'YMC420-W-PFF',
   vendor: "Yale",
-  description: "YMC420",
-  fromZigbee: [
-    fzLocal.action_source_user,
-    fzLocal.action_source_name,
-    fz.lock,
-    fz.battery,
-    fz.lock_operation_event,
-    fz.lock_programming_event,
-    fz.lock_pin_code_response,
-    fz.lock_user_status_response,
-  ],
-  toZigbee: [
-    tz.lock,
-    tz.pincode_lock,
-    tz.lock_userstatus,
-  ],
-  meta: {pinCodeCount: 250},
-  exposes: [
-    lock(), 
-    e.lock_action(), 
-    battery(), 
-  ],
+  description: "Door handle with pin code and fingerprint unlock",
+  extend: [lock({"pinCodeCount":250}), battery()],
   configure: async (device, coordinatorEndpoint) => {
     const endpoint = device.getEndpoint(1);
     await reporting.bind(endpoint, coordinatorEndpoint, ['closuresDoorLock', 'genPowerCfg']);

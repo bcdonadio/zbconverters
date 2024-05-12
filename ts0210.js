@@ -1,4 +1,6 @@
 const {battery, iasZoneAlarm} = require('zigbee-herdsman-converters/lib/modernExtend');
+const exposes = require('zigbee-herdsman-converters/lib/exposes');                                                                                                                                                                                            
+const e = exposes.presets;                                                                                                                                                                                                                                    
 
 const definition = {
   zigbeeModel: ['TS0210'],
@@ -14,10 +16,9 @@ const definition = {
         "alarm_1",
         "battery_low",
       ],
-      "alarmTimeout": 90,
     }),
   ],
-  meta: {},
+  exposes: [e.vibration(), e.battery_low(), e.battery()],
 };
 
 module.exports = definition;

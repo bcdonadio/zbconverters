@@ -2,6 +2,8 @@ const {lock, lock_action, pincode, battery} = require('zigbee-herdsman-converter
 const fz = require('zigbee-herdsman-converters/converters/fromZigbee');
 const tz = require('zigbee-herdsman-converters/converters/toZigbee');
 const reporting = require('zigbee-herdsman-converters/lib/reporting');
+const exposes = require('zigbee-herdsman-converters/lib/exposes');
+const e = exposes.presets;
 
 const fzLocal = {
   action_source_name: {
@@ -61,7 +63,7 @@ module.exports = {
   meta: {pinCodeCount: 250},
   exposes: [
     lock(), 
-    lock_action(), 
+    e.lock_action(), 
     battery(), 
     pincode(),
   ],

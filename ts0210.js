@@ -14,7 +14,7 @@ const definition = {
         "alarm_1",
         "battery_low",
       ],
-      "alarmTimeout": True,
+      "alarmTimeout": 90,
     }),
   ],
   meta: {},

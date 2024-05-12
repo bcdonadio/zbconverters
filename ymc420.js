@@ -58,7 +58,7 @@ module.exports = {
     tz.pincode_lock,
     tz.lock_userstatus
   ],
-  meta: {pinCodeCount: 250, ...meta},
+  meta: {pinCodeCount: 250},
   exposes: [
     lock(), 
     lock_action(), 
